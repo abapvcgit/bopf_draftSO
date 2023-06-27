@@ -1,0 +1,136 @@
+@Metadata.layer: #CORE
+
+@UI:{
+       headerInfo:{
+                typeName: 'Sales Order List',
+                typeNamePlural: 'Sales Orders List',
+                title:{
+                        type: #STANDARD,
+                        label: 'Connection',
+                        value: 'soid'
+                },
+                description:{
+                        type: #STANDARD,
+                        value: 'PartnerName'
+                }
+       }
+}
+annotate view zc_salesorder_header with
+{
+  @UI.facet: [
+          {
+             id: 'salesorder_info',
+             purpose: #STANDARD,
+             position: 1,
+             label: 'Sales Order',
+             type: #COLLECTION
+           },
+              { type: #FIELDGROUP_REFERENCE ,
+                label : 'Sales Order Information',
+                parentId: 'salesorder_info',
+                id: 'Information' ,
+                position: 1,
+                targetQualifier: 'information'
+               },
+               { type: #FIELDGROUP_REFERENCE ,
+                label : 'Total',
+                parentId: 'salesorder_info',
+                id: 'Total' ,
+                position: 2,
+                targetQualifier: 'total'
+               },
+               { type: #FIELDGROUP_REFERENCE ,
+                label : 'Log information',
+                parentId: 'salesorder_info',
+                id: 'Log' ,
+                position: 2,
+                targetQualifier: 'log'
+               },
+    {
+      purpose: #STANDARD,
+      position: 2,
+      importance: #HIGH,
+      label: 'Items Detail',
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_Items'
+     }
+  ]
+  @UI.hidden: true
+  souuid;
+  @UI:{
+        lineItem: [{ position: 1 }], //report position
+        selectionField: [{ position: 1 }], // filter position
+        fieldGroup: [{ qualifier: 'information', position: 1 ,importance: #HIGH}] // identification group postion
+  }
+  soid;
+
+  @UI:{
+        lineItem: [{ position: 2 }], //report position
+        selectionField: [{ position: 2 }], // filter position
+        fieldGroup: [{ qualifier: 'information', position: 2 ,importance: #HIGH}]// identification group postion
+  }
+  business_partner;
+
+  @UI:{
+        lineItem: [{ position: 3, label: 'Overall Status' }], //report position
+        fieldGroup: [{ qualifier: 'information', position: 3 ,importance: #HIGH}]// identification group postion
+  }
+  status;
+
+  @UI:{
+        lineItem: [{ position: 4 , label: 'Billing Status'}], //report position
+        fieldGroup: [{ qualifier: 'information', position: 4 ,importance: #HIGH}]// identification group postion
+  }
+  billing_status;
+
+  @UI:{
+        lineItem: [{ position: 5,label: 'Delivery Status' }], //report position
+        fieldGroup: [{ qualifier: 'information', position: 5 ,importance: #HIGH}]// identification group postion
+  }
+  delivery_status;
+
+  @UI:{
+        lineItem: [{ position: 6 }], //report position
+        fieldGroup: [{ qualifier: 'total', position: 1 ,importance: #HIGH}]// identification group postion
+  }
+  gross_amount;
+
+  @UI:{
+        lineItem: [{ position: 7 }], //report position
+        fieldGroup: [{ qualifier: 'total', position: 2 ,importance: #HIGH}]// identification group postion
+  }
+  net_amount;
+
+  @UI:{
+       lineItem: [{ position: 8 }], //report position
+       fieldGroup: [{ qualifier: 'total', position: 3 ,importance: #HIGH}]// identification group postion
+  }
+  tax_amount;
+
+
+  @UI:{
+      lineItem: [{ position: 9 , label: 'Updated By'}], //report position
+      fieldGroup: [{ qualifier: 'log', position: 1 ,importance: #HIGH}]// identification group postion
+  }
+  lchg_uname;
+
+  @UI:{
+      lineItem: [{ position: 10 , label: 'Updated'}], //report position
+      fieldGroup: [{ qualifier: 'log', position: 2 ,importance: #HIGH}]// identification group postion
+  }
+  lchg_date_time;
+
+  @UI.hidden: true
+  PartnerName;
+  @UI.hidden: true
+  StatusTxt;
+  @UI.hidden: true
+  BillStatus;
+  @UI.hidden: true
+  DelivetyStatus;
+  @UI.hidden: true
+  crea_uname;
+  @UI.hidden: true
+  crea_date_time;
+
+}
