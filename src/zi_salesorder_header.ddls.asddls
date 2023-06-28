@@ -31,7 +31,7 @@ define view zi_salesorder_header
   association [1]    to zvh_so_delstatus       as _DelStatus  on $projection.delivery_status = _DelStatus.DeliveryStatusID
   association [1]    to SEPM_I_Currency        as _Currency   on $projection.currency_code = _Currency.Currency
 {
-       @ObjectModel.readOnly: true
+       
   key  souuid,
        @ObjectModel.readOnly: true
        @Search.defaultSearchElement: true
@@ -42,6 +42,7 @@ define view zi_salesorder_header
        business_partner,
        _Partner.CompanyName      as PartnerName,
        @Consumption.valueHelpDefinition: [{ association: '_Currency' }]
+       @ObjectModel.readOnly: true
        currency_code,
        @Semantics.amount.currencyCode: 'currency_code'
        @ObjectModel.readOnly: true

@@ -1,5 +1,4 @@
 @Metadata.layer: #CORE
-
 @UI:{
        headerInfo:{
                 typeName: 'Sales Order List',
@@ -72,37 +71,37 @@ annotate view zc_salesorder_header with
   business_partner;
 
   @UI:{
-        lineItem: [{ position: 3, label: 'Overall Status' }], //report position
+        lineItem: [{ position: 6, label: 'Overall Status' }], //report position
         fieldGroup: [{ qualifier: 'information', position: 3 ,importance: #HIGH}]// identification group postion
   }
   status;
 
   @UI:{
-        lineItem: [{ position: 4 , label: 'Billing Status'}], //report position
+        lineItem: [{ position: 7 , label: 'Billing Status'}, { type: #FOR_ACTION, dataAction: 'BOPF:SET_TO_PAID', label: 'Set to Paid' }], //report position
         fieldGroup: [{ qualifier: 'information', position: 4 ,importance: #HIGH}]// identification group postion
   }
   billing_status;
 
   @UI:{
-        lineItem: [{ position: 5,label: 'Delivery Status' }], //report position
+        lineItem: [{ position: 8 ,label: 'Delivery Status' }, { type: #FOR_ACTION, dataAction: 'BOPF:SET_TO_DEL', label: 'Set to Delivered' }], //report position
         fieldGroup: [{ qualifier: 'information', position: 5 ,importance: #HIGH}]// identification group postion
   }
   delivery_status;
 
   @UI:{
-        lineItem: [{ position: 6 }], //report position
+        lineItem: [{ position: 3 }], //report position
         fieldGroup: [{ qualifier: 'total', position: 1 ,importance: #HIGH}]// identification group postion
   }
   gross_amount;
 
   @UI:{
-        lineItem: [{ position: 7 }], //report position
+        lineItem: [{ position: 4 }], //report position
         fieldGroup: [{ qualifier: 'total', position: 2 ,importance: #HIGH}]// identification group postion
   }
   net_amount;
 
   @UI:{
-       lineItem: [{ position: 8 }], //report position
+       lineItem: [{ position: 5 }], //report position
        fieldGroup: [{ qualifier: 'total', position: 3 ,importance: #HIGH}]// identification group postion
   }
   tax_amount;
@@ -110,13 +109,13 @@ annotate view zc_salesorder_header with
 
   @UI:{
       lineItem: [{ position: 9 , label: 'Updated By'}], //report position
-      fieldGroup: [{ qualifier: 'log', position: 1 ,importance: #HIGH}]// identification group postion
+      fieldGroup: [{ qualifier: 'log', position: 1 ,label: 'Updated By',importance: #HIGH}]// identification group postion
   }
   lchg_uname;
 
   @UI:{
       lineItem: [{ position: 10 , label: 'Updated'}], //report position
-      fieldGroup: [{ qualifier: 'log', position: 2 ,importance: #HIGH}]// identification group postion
+      fieldGroup: [{ qualifier: 'log', position: 2 ,label: 'Updated',importance: #HIGH}]// identification group postion
   }
   lchg_date_time;
 

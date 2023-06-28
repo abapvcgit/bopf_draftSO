@@ -12,6 +12,7 @@
       deleteEnabled: true,
       updateEnabled: true
 }
+
 define view zc_salesorder_item
   as select from zi_salesorder_item
   association [1] to zc_salesorder_header as _Header on $projection.so_uuid = _Header.souuid
@@ -21,6 +22,7 @@ define view zc_salesorder_item
       @Search.defaultSearchElement: true
       so_item,
       prod_id,
+      PrdName,
       quantity,
       unit_id,
       deliverydate,
@@ -29,8 +31,11 @@ define view zc_salesorder_item
       net_amount,
       tax_amount,
       available,
+      AtpStatus,
       /* Associations */
       @ObjectModel.association.type: [#TO_COMPOSITION_PARENT, #TO_COMPOSITION_ROOT]
       _Header,
-      _Product
+      _Product,
+      _Atp,
+      _Pdesc
 }
